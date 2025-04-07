@@ -1,0 +1,13 @@
+pinecone
+langchain-pinecone
+langchain-openai
+langchain-text-splitters
+langchain
+fastapi
+python-dotenv
+sentence_transformers
+langchain_community
+langchain-huggingface
+pypdf
+uvicorn
+mangum
