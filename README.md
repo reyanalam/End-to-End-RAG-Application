@@ -1,14 +1,12 @@
-# Deploy RAG/AI App To AWS
-
-## Getting Started
+# End to End RAG Application
 
 ### Configure AWS
 
-You need to have an AWS account, and AWS CLI set up on your machine. You'll also need to have Bedrock enabled on AWS (and granted model access to Claude or whatever you want to use).
+You need to have an AWS account, and AWS CLI set up on your machine.
 
 ### Update .env File with AWS Credentials
 
-Create a file named `.env` in `image/`. Do NOT commit the file to `.git`. The file should have content like this:
+Create a file named `.env` in `image/`. 
 
 ```
 AWS_ACCESS_KEY_ID=XXXXX
@@ -16,10 +14,6 @@ AWS_SECRET_ACCESS_KEY=XXXXX
 AWS_DEFAULT_REGION=us-east-1
 TABLE_NAME=YourTableName
 ```
-
-This will be used by Docker for when we want to test the image locally. The AWS keys are just your normal AWS credentials and region you want to run this in (even when running locally you will still need access to Bedrock LLM and to the DynamoDB table to write/read the data).
-
-You'll also need a TABLE_NAME for the DynamoDB table for this to work (so you'll have to create that first).
 
 ### Installing Requirements
 
@@ -64,15 +58,11 @@ Then go to `http://0.0.0.0:8000/docs` to try it out.
 
 ## Using Docker Image
 
-### Build and Test the Image Locally
-
 These commands can be run from `image/` directory to build, test, and serve the app locally.
 
 ```sh
 docker build --platform linux/amd64 -t aws_rag_app .
 ```
-
-This will build the image (using linux amd64 as the platform — we need this for `pysqlite3` for Chroma).
 
 ```sh
 # Run the container using command `python app_work_handler.main`
@@ -81,10 +71,6 @@ docker run --rm -it \
     --env-file .env \
     aws_rag_app app_work_handler.py
 ```
-
-This will test the image, seeing if it can run the RAG/AI component with a hard-coded question (see ` app_work_handler.py`). But since it uses Bedrock as the embeddings and LLM platform, you will need an AWS account and have all the environment variables for your access set (`AWS_ACCESS_KEY_ID`, etc).
-
-You will also need to have Bedrock's models enabled and granted for the region you are running this in.
 
 ## Running Locally as a Server
 
