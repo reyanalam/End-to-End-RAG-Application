@@ -1,5 +1,7 @@
 # End to End RAG Application
 
+![Screenshot (253)](https://github.com/user-attachments/assets/e685176e-084a-4728-8eed-9d5e1d198480)
+
 ### Configure AWS
 
 You need to have an AWS account, and AWS CLI set up on your machine.
